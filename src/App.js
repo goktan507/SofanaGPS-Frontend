@@ -7,19 +7,24 @@ import MapView from './MapView';
 import './style.css';
 
 const history = createBrowserHistory();
+const location = {
+  lat: 33.510726,
+  lng: -112.127271,
+}
+
 
 class App extends React.Component {
   render() {
-    return (
-      <Router history={history}>
-        <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/about-us" component={AboutUs} />
-            <Route exact path="/" component={MapView} />
-          </Switch>
-        </div>
-      </Router>
+  return (
+    <Router history={history}>
+      <div>
+        <Navbar/>
+        <Switch>
+          <Route exact path="/about-us" component={AboutUs} />
+          <Route exact path="/" render={() => <MapView location={location} zoomLevel={17}/>} />
+        </Switch>
+      </div> 
+    </Router>
     )
   }
 }

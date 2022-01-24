@@ -10,7 +10,7 @@ const LocationPin = ({ text }) => (
       <Icon icon={locationIcon} style={{ fontSize: '36px' }} className="pin-icon" />
       <p className="pin-text">{text}</p>
     </div>
-  )
+  );
 
 
 const MapView = ({ location, zoomLevel }) => (
@@ -30,6 +30,6 @@ const MapView = ({ location, zoomLevel }) => (
         </GoogleMapReact>
       </div>
     </div>
-  )
+  );
 
 export default MapView;

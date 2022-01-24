@@ -1,6 +1,6 @@
 import { createBrowserHistory } from "history";
 import React from "react";
-import { Router, Switch, Route } from "react-router";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import AboutUs from './AboutUs';
 import MapView from './MapView';
@@ -15,17 +15,15 @@ const location = {
 
 class App extends React.Component {
   render() {
-  return (
-    <Router history={history}>
-      <div>
+    return (
+      <Router history={history}>
         <Navbar/>
-        <Switch>
-          <Route exact path="/about-us" component={AboutUs} />
-          <Route exact path="/" render={() => <MapView location={location} zoomLevel={17}/>} />
-        </Switch>
-      </div> 
-    </Router>
-    )
+        <Routes>
+          <Route path="/about-us" element={<AboutUs/>} />
+          <Route path="/" element={<MapView location={location} zoomLevel={17} />} />
+        </Routes>
+      </Router>
+    );
   }
 }
 export default App;

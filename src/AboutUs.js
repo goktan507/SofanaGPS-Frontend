@@ -16,7 +16,7 @@ class AboutUs extends React.Component {
                     </li>
                 </ul>
             </div>
-        )
+        );
     }
 }
 

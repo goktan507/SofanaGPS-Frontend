@@ -56,7 +56,17 @@ export class MapContainer extends React.Component {
                             center={center}
                             zoom={16}
                         >
-                            <Marker position={{ lat: parseFloat(this.state.location.lat), lng: parseFloat(this.state.location.lon) }} />
+                            <Marker 
+                                position={{ 
+                                    lat: parseFloat(this.state.location.lat), 
+                                    lng: parseFloat(this.state.location.lon) 
+                                }}
+                                icon={{
+                                    url:'https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/008/228/original/golf-cart.png',
+                                    anchor: {x: 15, y: 50}, 
+                                    scaledSize: {width: 35, height: 35}
+                                }}
+                            />
                         </GoogleMap>
                     </LoadScript>
                 </div>

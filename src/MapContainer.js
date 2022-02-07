@@ -17,7 +17,7 @@ const center = {
 
 
 export class MapContainer extends React.Component {
-    state = { location: { lat: 33.510726, lon: -112.127271 } }
+    state = { location: { lat: 0, lon: 0 } }
 
     // GET Request from SofanaGSP-API to get last location of the golf cart
     // Updates the state to refresh map view
@@ -46,10 +46,10 @@ export class MapContainer extends React.Component {
     render() {
         return (
             <div className="map container">
-                <h2 className="map-h2">Find the closes Golf Cart on Map</h2>
+                <h2 className="map-h2">Find the closest Golf Cart on the Map</h2>
                 <div className="google-map">
                     <LoadScript
-                        googleMapsApiKey='AIzaSyAys6ks4cIR_aNIoqLlyAMV0l7AuMJyIas'
+                        googleMapsApiKey='AIzaSyBRPpo_b0Avhje0523IAidpVRAp4XAHcSg'
                     >
                         <GoogleMap
                             mapContainerStyle={containerStyle}

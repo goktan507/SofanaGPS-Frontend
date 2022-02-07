@@ -31,11 +31,13 @@ export class MapContainer extends React.Component {
         .then(response => this.setState({ location: response.data }))
     }  
 
+    //Initialize Map with Golf Cart Marker - Occurs when MapContainer component is being called
     async componentDidMount() {
         await this.getLocation();
         console.log("Component Mounted: ", this.state.location);
     }
 
+    //Update Map with Golf Cart Marker - Occurs when MapContainer component receives an update
     componentDidUpdate() {
         setTimeout( async () => {
             await this.getLocation();

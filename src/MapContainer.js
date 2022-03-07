@@ -18,8 +18,7 @@ const center = {
 
 export class MapContainer extends React.Component {
     state = {
-        location: [{ Id: '6222f7e0d12f2d6bd60c67fe', lon: '-112.128878', lat: '33.514707', cartId: 0, dateTime: '01/31/2022 09:24:46' },
-        { Id: '6222f7e0d12f2d6bd60c68fe', lon: '-112.128878', lat: '33.515707', cartId: 1, dateTime: '01/31/2022 09:24:46' }],
+        location: [],
         markers: []
     }
 

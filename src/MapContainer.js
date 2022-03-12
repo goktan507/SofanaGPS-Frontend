@@ -18,43 +18,49 @@ const center = {
 
 export class MapContainer extends React.Component {
     state = {
-        location: [],
         markers: []
     }
 
     // GET Request from SofanaGSP-API to get last location of the golf cart
     // Updates the state to refresh map view
     getLocation = async () => {
+        let resp;
         await axios.get('https://sofanagpsapi.azurewebsites.net/api/locations/lastLocation', {
             auth: {
                 username: "sofanagps452",
                 password: "cst452ana"
             }
         })
-            .then(response => this.setState({ location: response.data }))
+            //.then(response => this.setState({ location: response.data }))
+            .then(response => resp = response.data);
+            return resp;
     }
 
     //Initialize Map with Golf Cart Marker - Occurs when MapContainer component is being called
     async componentDidMount() {
-        await this.getLocation();
-        this.loadMarkers();
-        console.log("Component Mounted: ", this.state.location);
+        let loc = await this.getLocation();
+        let mrkrs = this.loadMarkers(loc);
+        this.setState({markers: mrkrs})
+        console.log("Component Mounted: ", loc, "\nCount of Markers: ", mrkrs.length);
     }
 
     //Update Map with Golf Cart Marker - Occurs when MapContainer component receives an update
     componentDidUpdate() {
         setTimeout(async () => {
-            await this.getLocation();
-            this.loadMarkers();
-            console.log("Component Updated: ", this.state.location);
-        }, 10000);
+            let loc = await this.getLocation();
+            let mrkrs = this.loadMarkers(loc);
+            this.setState({markers: mrkrs})
+            console.log("Component Updated: ", loc, "\nCount of Markers: ", mrkrs.length, " Updated @ ", Date().toLocaleString());
+        }, 6000);
     }
 
-    loadMarkers() {
+    //Creates n number of markers, returns them in a list to be updated in state property. 
+    //n => number of location info retrieved from API endpoint (/lastLocation)  
+    loadMarkers(location) {
         let markers = [];
-        this.state.location.forEach(loc => {
+        location.forEach(loc => {
             markers.push(
-                <div>
+                <div key={loc.cartId}>
                     {/* Golf Cart icon */}
                     <Marker
                         position={{
@@ -83,7 +89,7 @@ export class MapContainer extends React.Component {
                     />
                 </div>)
         })
-        this.setState({markers: markers});
+        return markers;
     }
     render() {
         return (

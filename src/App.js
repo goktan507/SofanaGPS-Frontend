@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import AboutUs from './AboutUs';
 import './style.css';
 import { MapContainer } from "./MapContainer";
+import Footer from "./footer";
 
 const history = createBrowserHistory();
 
@@ -13,6 +14,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <div>
       <Router history={history}>
         <Navbar />
         <Routes>
@@ -20,6 +22,8 @@ class App extends React.Component {
           <Route path="/" element={<MapContainer/>} />
         </Routes>
       </Router>
+      <Footer/>
+      </div>
     );
   }
 }

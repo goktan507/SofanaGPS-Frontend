@@ -27,8 +27,8 @@ export class MapContainer extends React.Component {
         let resp;
         await axios.get('https://sofanagpsapi.azurewebsites.net/api/locations/lastLocation', {
             auth: {
-                username: "sofanagps452",
-                password: "cst452ana"
+                username: process.env.REACT_APP_USERNAME,
+                password: process.env.REACT_APP_PASSWORD
             }
         })
             //.then(response => this.setState({ location: response.data }))
@@ -45,14 +45,14 @@ export class MapContainer extends React.Component {
     }
 
     //Update Map with Golf Cart Marker - Occurs when MapContainer component receives an update
-    componentDidUpdate() {
-        setTimeout(async () => {
-            let loc = await this.getLocation();
-            let mrkrs = this.loadMarkers(loc);
-            this.setState({markers: mrkrs})
-            console.log("Component Updated: ", loc, "\nCount of Markers: ", mrkrs.length, " Updated @ ", Date().toLocaleString());
-        }, 6000);
-    }
+    // componentDidUpdate() {
+    //     setTimeout(async () => {
+    //         let loc = await this.getLocation();
+    //         let mrkrs = this.loadMarkers(loc);
+    //         this.setState({markers: mrkrs})
+    //         console.log("Component Updated: ", loc, "\nCount of Markers: ", mrkrs.length, " Updated @ ", Date().toLocaleString());
+    //     }, 6000);
+    // }
 
     //Creates n number of markers, returns them in a list to be updated in state property. 
     //n => number of location info retrieved from API endpoint (/lastLocation)  
@@ -97,7 +97,7 @@ export class MapContainer extends React.Component {
                 <h2 className="map-h2">Find the closest Golf Cart on the Map</h2>
                 <div className="google-map">
                     <LoadScript
-                        googleMapsApiKey='AIzaSyBRPpo_b0Avhje0523IAidpVRAp4XAHcSg'
+                        googleMapsApiKey={process.env.REACT_APP_API_KEY}
                     >
                         <GoogleMap
                             mapContainerStyle={containerStyle}

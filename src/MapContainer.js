@@ -45,14 +45,14 @@ export class MapContainer extends React.Component {
     }
 
     //Update Map with Golf Cart Marker - Occurs when MapContainer component receives an update
-    // componentDidUpdate() {
-    //     setTimeout(async () => {
-    //         let loc = await this.getLocation();
-    //         let mrkrs = this.loadMarkers(loc);
-    //         this.setState({markers: mrkrs})
-    //         console.log("Component Updated: ", loc, "\nCount of Markers: ", mrkrs.length, " Updated @ ", Date().toLocaleString());
-    //     }, 6000);
-    // }
+    //componentDidUpdate() {
+    //    setTimeout(async () => {
+    //        let loc = await this.getLocation();
+    //        let mrkrs = this.loadMarkers(loc);
+    //        this.setState({markers: mrkrs})
+    //        console.log("Component Updated: ", loc, "\nCount of Markers: ", mrkrs.length, " Updated @ ", Date().toLocaleString());
+    //    }, 6000);
+    //}
 
     //Creates n number of markers, returns them in a list to be updated in state property. 
     //n => number of location info retrieved from API endpoint (/lastLocation)  

@@ -5,7 +5,7 @@ import axios from "axios"
 
 // Google's Map style property
 const containerStyle = {
-    width: '1200px',
+    width: '70vw',
     height: '600px'
 };
 
@@ -93,9 +93,9 @@ export class MapContainer extends React.Component {
     }
     render() {
         return (
-            <div className="map container">
+            <div className="container"> 
                 <h2 className="map-h2">Find the closest Golf Cart on the Map</h2>
-                <div className="google-map">
+                <div className="map google-map">
                     <LoadScript
                         googleMapsApiKey={process.env.REACT_APP_API_KEY}
                     >

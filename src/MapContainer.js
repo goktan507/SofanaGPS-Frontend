@@ -2,7 +2,6 @@ import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import axios from "axios"
 
-
 // Google's Map style property
 const containerStyle = {
     width: '70vw',
